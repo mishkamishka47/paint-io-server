@@ -5,7 +5,7 @@ const onSocketConnect = io => socket => {
     // TODO 2.1 Listen for login events (eg "LOGIN") from client and save the user using db.create(username, socket.id)
     socket.on('LOGIN', (username, ack) => {
         // TODO 2.2 Prevent users from using an existing username using the "acknowledgement" from the client
-        if (db.userExists(username)) {
+        if (db.get(username)) {
             ack('That username is already taken. Try a different one.');
         } else {
             // TODO 2.3 Emit an update user list event (eg "UPDATE_USER_LIST") to all clients when there is a login event
